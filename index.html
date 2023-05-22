@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bootstrap</title>
+    <link rel="stylesheet" href="./bootstrap.min.css">
+
+    <style>
+        .block {
+            width: 200px;
+            height: 200px;
+        }
+
+        .circle {
+            width: 100px;
+            height: 100px;
+        }
+
+        .circle {
+            width: 32px;
+            height: 32px;
+        }
+    </style>
+</head>
+
+<body>
+    <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+        <symbol id="sun" viewBox="0 0 16 16">
+            <path
+                d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0Zm-8.082.414c.92 0 1.535.54 1.541 1.318.012.791-.615 1.36-1.588 1.354-.861-.006-1.482-.469-1.54-1.066H5.104c.047 1.177 1.05 2.144 2.754 2.144 1.653 0 2.954-.937 2.93-2.396-.023-1.278-1.031-1.846-1.734-1.916v-.07c.597-.1 1.505-.739 1.482-1.876-.03-1.177-1.043-2.074-2.637-2.062-1.675.006-2.59.984-2.625 2.12h1.248c.036-.556.557-1.054 1.348-1.054.785 0 1.348.486 1.348 1.195.006.715-.563 1.237-1.342 1.237h-.838v1.072h.879Z" />
+
+        </symbol>
+        <symbol id="sun1" viewBox="0 0 16 16">
+            <path
+                d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0ZM9.283 4.002H7.971L6.072 5.385v1.271l1.834-1.318h.065V12h1.312V4.002Z" />
+
+        </symbol>
+        <symbol id="exclamation-triangle-fill" viewBox="0 0 16 16">
+            <path
+                d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
+        </symbol>
+    </svg>
+    <div class="container py-4 ">
+        <div class="row g-5">
+            <div class="col-12 col-lg-8">
+                <div class="px-5">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="#">Home</a></li>
+                            <li class="breadcrumb-item"><a href="#">教學</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Bootstrap</li>
+                        </ol>
+                    </nav>
+                    <div class="dropdown mb-4">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            文章分類
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#">教學</a></li>
+                            <li><a class="dropdown-item" href="#">資源分類</a></li>
+                            <li><a class="dropdown-item" href="#">實作範例</a></li>
+                        </ul>
+                    </div>
+                    <img class="img-fluid"
+                        src="https://hips.hearstapps.com/hmg-prod/images/golden-retriever-royalty-free-image-506756303-1560962726.jpg?crop=1.00xw:0.756xh;0,0.0756xh&resize=1200:* "
+                        alt="">
+                    <div class="  p-3 rounded-2 shadow">
+                        <h1 class="text-primary">Bootstrap Grid：打造網頁佈局的完美解決方案</h1>
+                        <div style="white-space: pre-line;">
+                            嘿，大家好！今天我們要一起探索 <mark> Bootstrap 的 <abbr title="網格">Grid</abbr>
+                                系統</mark>，這是設計師和開發者的秘密武器，能夠輕鬆打造出令人驚艷的網頁佈局。快跟著我們一起踏上這趟有趣的旅程吧！
+                            <img class="img-thumbnail float-end clearfix"
+                                src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAoHCBYVFRgWFhYYGBgaHR4cHBwcHCEcIR4aHBoaHBwcHBocIS4lIR4rISEcJjgmKy8xNTU1GiQ7QDs0Py40NTEBDAwMEA8QHhISHzQrISQ0NDQ0NDQ0NDQ0NDQ0NDQ0NDQ0NDQ0NDQ0NDE0NDQ0NDQ0NDQ0NDQ0NDQ0NDQ0NDQ0NP/AABEIALcBEwMBIgACEQEDEQH/xAAcAAACAgMBAQAAAAAAAAAAAAAEBQIDAAEGBwj/xABIEAABAwIDBAYHBQUGBQUBAAABAAIRAyEEEjEFQVFhInGBkaHRBhNSscHS8BQyQpLhFWKCovFDU3KTsuIkNERUwhYjM4OzB//EABgBAQEBAQEAAAAAAAAAAAAAAAEAAgME/8QAIBEBAQEBAAICAwEBAAAAAAAAAAERAiExA0ESIlETMv/aAAwDAQACEQMRAD8A5GmzogoTEU/f70xYBltpu96GxLLdvuWaYebAdOHj2TPddMcd0aDzGgFv4glvo0JY9vM+I/RNMbfDVTf7jnW5NzIF9uPGFqQHuY4NNwTYcRB+tUHjrPYSeG/S5TfF7XZVYxr3ublDRAgjoiEuxuEY8ZmVdOLd3JX206ahWbTp5zo0T3blxOOeXEvP4ydOd05w7n4hgpgkMZZzja/Ibz4BW7b2Y1lNgY0ACeuQJk8zdUViFfFvGBosLmFriA1oHS6JdcuSp7cznbrxrwWqdfMGMv0SSfCFZTLZkjQ7uPWbLVUTc9wY4SMsgb5/XRAU/ul1r9Ed90TiamYXEaxCppCMs7t3Us0VeymMxMkAC/Vu+KY/Zc9GeBlLtc1r+76+Ce4K9F3b70T2EtiiHs6nj+UoD0sEYieLGO72wmWx2dNhO58dhBCB9N2ZalPmxvgSPJMNIWOALOs+5TYP/cjiPgVWT0m/VlNmpc770iBrEOAUh+LZlYw9ZXQ4iTTY4aZBPVlAslG2GdBn1uCOqPP2agRwI7jCj9A8Yzog8m/FEbMEujix/wDochcQ8FnUB71fsAzVYP8AEO9pVKy9Q2WwHDMsL0m/6AuIZQeKNB7XdF1VoDSPu1Lw7q5J9sbF4k0qbWYd7m5GgOzNaDbXqVvpDh6jW0MzAD65hIYcwAiCSQNy5T5O71lmT+63nOeyicSK+IylheG9MxYjLaBuMJe2piBgbBvqCQP3vvD4p1hsROJxwPsa7rNS9hjZQdP4m/8A6BdNqyBNpYrEjDMbUYBS6OVw1OsCx+CntLbGIOGFN9EsZDIffQERfS6Y+kp/4CjcXyf6SrvSGoDs4D92n72q1Y52lt1zabGer6LZvmIzSZjTRA08YASSNXExuveE42biC6ixkNIALjxBk2KQUYzOzRqT2glSu5Gi/pSPqybbC2oyi533pMHQESDN5SXNMlsDh37k72PhWPD8/wB8gBl46RNyeQCbaMui9q7fY+Q4EA9IgNjM6IAMaAeSTYbFNzzMQ4EdQMymmJ2K25DiRu4gmNTGi5/CtLiGmBJjxhG1WX7ejD0wYLesFv3SsXIjYB9tup3HisR+VOX+BqDOhA4D3Qh3u6BPJX7PuI4tB96GqCJC1fQ+zf0bf94dvvT7DgPpvb+69vgWrmPRip0y3iP0XSbOs57d0n4E+9DNefOwoALXNa10DWbzoRO7kmOym5KdSRpcmZBkKva2Kc8OaGQWkiTc6xab80N6ssYxl5PTf26BMbqzZmKc3MHH8fhujknDiajHEEyLQd0XB7fckT2yZ+66OjryF43XReDruEjQZA3rgm/j4JwFrGAvmIEEx9blMVOhlgDpWO9GNw7HGASHxPItiIjdChWwhY3NIhszbTrRcam54L6jhfUj3DRbojpAHcfgtU3Xjjw69O34ree9ouYtz1U5rG6neJ/RP9mGaTxzPjK5/JECDAOvUE82M7ovHV3ontGOzmXYf32nvIQXp/Th9L/C8dzv1TLACGi+hHg5B+nzpNIx7Y/0ErXpVyTR0wCptbme1uoGvff4LTB0xvt4ppszY1eo8PDC2Sbu6O6N6COx1DPTEai/gu2wfoW1+GYw18rwM33OiC6+XWeUoLZ/o9mGR7uAIbzHFdKcU1jmskaWmQe8BRk156/0WxLXGkWQZu6ejHEO3hOtjeh76b2vfUEgzlaJ7JPkvTsIA9ozAFYzY7QQ4OOs6JnMZpVgMJ6mk1gJgCBJmAogh4LTuM396fVcLISylgy17id+isamYWYjZbHFxizhCS47YObDOojosmcrbaGbcLrsHUhMRCi6iIiy62Sue4882/smo/DMptsGlpDiZ+6IuED6Qtf9mFNoOjJAGpaRpy39i9DxWFDmEa8kLicLmpZSBYW4hZvEbnVeZYYP9S0SWuhwcCIvJhIqFaA6bwCV61h9kMeyHyHchK5ev6PUi9zA2HXFrSFn8cP5a5jCgilUdH4e64Tr0cdLxGkGTw6lmP2E+mx7RIzCLxc8yEFsbCvpkB1oOoMyOCz1DLNjqcQyKdjMP3b4JFlxWHPSHHN8V2WGrDKRIDRJ7SLfFcTso56jWzq8DvdCxG+/p2zMI6Br4rFtz3NtOnNYs66Y50NLKgERLfoiEFjLOV73gPa6I6Rkd0dSq2o6DN+K6z/nHDq/tVmwXxiG87LrsOIquG4gHwPkuL2PWBrMMEEOH9Qu7fSisDuLfGf6oxmuS2pTayo55a4AOMuMkTMi/DRAMxLPWlxDXh0NYNZcSIvu7V0e2cawPqUqrWhheL74ygxG/Vcpg6lKm85pLGzBFiJNjbeBPeiT34dd9XT/APZQc5zntzOEHWGkb8o9kfBAYgQXOyNDCYaZJs2c0byJmyNobZZUa4MLyCQ0Z4AaCYku10k6aqIaAQzMCW2b7IgGwI1F9SszZ7dP169KMAxgMu6LjYToBNwTrOip23UysLQ2MxMGdQLmDw0705dgnPc1z25rAy2D7hp8VzO2KwLyxjIy9HqOhPXY9yp5rPec84EYzoiYm1+GvwWMIiYsNOZO+yIpYZzxlpse69oBOkC/DtTfCeiNdwBdDG21ue4W8Vp5yFt7CLWBOm6/Um+xH5i6Ly0R3LpsL6I4doAeXP5Gze7f1QmDqDKcNY1rANwACZL7RPR2e9zRo0TqeCO2rstmILfWFxyZjDd8wOs6DTir8TVkgan4KeDc0OzFxJiTA0j3lObSAwezmNGZjAwDfFzG6UU58OJH1f8AVWY/EspMaaj2sEHfr1DUlcxivScOe1tBhOYxmdbfEhvnClrvthsLn5jeO7+vmi8RszO9pLdN4+IRWyKOSk0HWJPX9cgiftIFlrDOrPQ3DEMACKNaAuK9MNrYmlSBwzC5xdDnASQ3lY3mNx6k29C8TiH0i3FMyvaAQY1aZuYtNrhLJ67GMbAc4N6zHiVY9wXMel/owcbkNOqGFmY6ZhmIAFt1pumuzsCaVBlNzpcxgbOmg4bhyTgE4gAiUBDuzgjQ0wQln2sgkWtxn4JlFiwyRwVb6ZyxqFtuKngtOf8AULRDU6UC1krq0Rn5pw58IWvTn7obPE38JCzVAGOojI6wkDgleyMCysSHSyPFdC9ki8IbDUshkKqL9oejzQ0lj3aaWuuJbsQU3h7C4FrgeOhlem1Xkhc4+h09+v1ZHUhlpW6uTqD3LF0P2Bv0Fix/nG/9K4faVBzCAYB6JPWdRO/Tch9tjoZhw98IipiJaclTOBuImDrBmRI4xvVtRudgDgD4e6Pcs8ej8s/Zz2xapa9vIgjvj9exequeCaZ4j4eS83ZQpsdPTaZF7OHHgLLuW7QAY3UWAvv46WC0xSX0jrlldznsIY5oyvyyGmLzG85QlDcCyoxhJ6bhndedTZpEWICdbXNWvUY1jQ5hgvuIhjicszvtbgo4P0dcHZn1WiSXENuZJ4nTsCzXTnJJpazD5HMDA1sug8LERI4fqmDMG58wy53jSZ3jcOKeMwrGhvQDsosXa8OHFEvxJAgQ0chu69VnLT+cmyFrNjkCS8tsIHAi8x+JS2X6MYYHMWue7i7Thpp4IypXmANdSjsDIiVrnma59dW+14oNZZoDQOA5IWpiemW7oEdfloiMY6L8EixOJaw5nkBt5JMeK16ZMH1bQOHmhy5zr6x7lzmP9K2M6NOXnTMei3nrcpTR2zVrVAHO6PstsO3j2qqdJjNosY6ZzEDRuumnBKdobXrNZnZDASBP3nQeE28FW5nSI5FT2tS/4UO4ZP8AUB8Vm+y5avVc9znPc5zouXGSe0p36H4I1q7G7g6TBgxE237teaS0WFziN5XsvoH6PNoUhUe0Z3idLgHctQOlDYbCgyiArHlV1FpMfjGNs4A+aG23tF32eoGODHlpg8PoW7UJimXgfouU2xhHvzM+0PaDugW5BwGipVhf6F7UxL8bSa+rUyBxc64AcId0SBq3lyXrGIxvTgHReZejPozkeaj3l5H3QDlvGriDJXe4ZosE6qa0ahKX7T6Lp4oyiUHtOpoJvu0+KogjKpI1Hf8AqrGuPEKuhSdq5ze+/gEW1v7w71oKnRx8CoFnWif4vH9FW9h4jvHkpBn9RUGM+pRL6fMfXYqms5+9SVVJ5d6U1qXTm3inrmcz4+aWVsMc0z7/ADRTF9M2Fx3LFvIeXj5rEh59iqGVkQ05oILbQDqTx1AVmCwr3tHQInjbXrXS+qY0h0ZucRblvhU1Ma6SGw3q179V5udjr31OrpW30azffdl5C3vv4JkMJTYACCY+t6g2ped5BubnkZWqj7SfqNy3m+2E8biWBkBoEToJJjhvKFpP0ufEdVkPVfJcp4V0gjhe/UNOxUqGBziYnvHuywtvkHj1H4HzVVN17mw+HWgNo+kFNhytl7o0bp2u07pTqM2AAzccLT7pRbdpMYJc4uI3NBc78ouO1cHiNtVXgtByCDGW09btZ7kre6GkEjOYFzNt8fW9Gh2O1PSio8ltOmW/4hLo/wAOg8VyG0a73uGfMSNxmZPIomqSW3e6AbAEjQcEKcQ8QA0O5OAMSd40mVTL7UBEe5H7MaA9t4PDjO9bZjQPv0KTj/hy/wCkhFYTGUS5p+zgEGLVHgX4Ak8FrJ/TIbV2gEu5Qrse0OwTuQHhUHko18TT3sN40J8wrn1GHDPEdDKZF80STY5uPNF5m+4cLPQTZ4rYkEiQ05o6j7tF7ZMCF5N6LCo0/wDCMIl3Sls6e04uMDWF6T61wHT1TZgxe+pdUvqXhCvrTcKtlQ5p+utIGvA3pbicM0lXPxGnf9dpQeKxEgxrPw0ViboQxwg7k2oVQTK4n7RUNSI0HeNLJ5s17x95KdZTMhc3tfEnPluCPrVPMHUsgsbhGPfmcxzjpAdl/ROaNJWYx34nuHU0fBWnaZj7zvyhMaWzmD+yHa9X/Y27qTO0/ojKdhQNpO3OcewBaO0zwf4eac/ZAP7Nnf8AosGHj+zYO3/anKNhUzaJOocOuPNWnEcz2FHGh+4z6/hUW0jP3GfX8Ksq0B9onQO/NCxwMTb8xPwTM0jwb9diEq0zO5WLVGf93+f9FiJh37vcsTi8Oae+eUIZ8zAHVx8la90laNuC888tqmjip5ejv37uP0EFjNqU2TLsx4NF/IJU/a9WrIZ0BO65jri3ct6DaqIidTEDfogsRinsaXNZPAu0O6AN6WYak9hL3Oc5+s6u13Eo79rhsXGYCHDcSXXdwmQVz66x05+P8oW4qtVc/K/ongdI4xyCCY7VwO8xbWd90XtAF7i6XOJJsRFuRBv2IKnRcY6DrXE2mIFuKPyPXw36UVXdcg3m1z4awtUGEuabE3Onh8VlRh4F1pvu114cVbhZLZgy6w7Brfct/TlZYIqOMwCJI0jkL9SrYIde2+dJP9ZUwYJEyTqeO5arsdMWmJcdfr9EMhH3146nndSwwGcGb2P9CoV2NFmtPdKjRJDm66j3/qtfRjocRfKn+xNjvxLHMb90gtcTulJMPSL3sYBcmB2r2TZeDbQptY0RAvzO9Yk3rSG2LsZmGp5GgAxcib96o2hQc4WkJw56rLQQuvtPP37Sq0HvbVbLGZcr41D7Dr6VrcExwu22PIYDLsuY8hr3+ao2ps52Jx5oucfUNpMc9kCCc78t9Zm9tMqDZ6DVaT3Oo1gQQQ0PBkXESRrHYmI+FVpMSCT8OCrLAZvfy+N0twHo7iWPzOewgaXNgRfUdSKOyMQKgeHsyiZbe4NhdawFeGe37VmAvUc5kE2ytbmcQDoZE2T7E4ltG7vu+5LauyqjZcGBzgOj4THAmNy5D0m2nVsx/RsJYSJF+AJ5hUT1ilDbFxHYT8FeXtHtn8w+CC2dinvw2HqDLmfRpudM6uptJ8VcMU/iz8p80hdnG7P3P81NtQcH+PmqPXP4t/IfmWF7xvb+T/epCC4Hc/x81FzhwP12ql9R5tmH5P8AcsOf2h+T/clJGPYP11lVmPY93mthr/bP5QoODvaJ6gPJCTDG+x7vND1WfujwVpafad3N8lS4O3k/y/KpMyD2B3BYoy79/vb5LFLHHYnEuaWtaxxLjAMdEEcTuSbaOKeXFrnbxZthEA6Sm2P2g45/VCWiHCBaDcmN+/Rc/Wdm6WUN0tyjLbyXk562vT38c550LWZ9dSZ7HpSHHhHxVDmT4+aYbIbGfsXWuKFRk5hmDNekd2hkpDTpNJeWkPyCQbiQCZ4TcnvT+uwHOCJBBkdYIIXO0qz2ycmXkOHbyWLu+HTizPIn7Q8BoyiAQSGt0BG/fuTlmPpZY9U+XN++5t76AZdAB32skv2/oAZmS4XMiRG6VKpiRlYWVMrxaM1uMRx7UXh0/Pxip4phzgA8tBy5nA3PAi0Cyk65J5yOSxuYk57wOIiTq4RrIWZRE+HJMmOXydb4QYIMTqqKjhMkGDw+vqFfUEXNo95Q7+u3vS5N4gADKIuJO+x0HchGmCNd3wRVYEm2mVp7miLoUU3Oc1rQS5xAA5kiAtRPTvQPZ2eo6q4dFggf4j5D3rvnPQWyMCMPRZTGoHSPFx1RDyieGonnWlQSpB61Kq02mGvLgLkAE8hMBEoYOVjHLTKblUY3qTn3Q9UyEpF8NK88/wD6XgS59NzGy5/Rkb3EwJ/l7l22NrhrS5xgASuX2Y/7ZimvcD6vDHNfTP8AgbwJH3uwcQmJ176YYxjAYDGNYLxZoDR7lTnHtj8x81KpWpudPQJ5kfFbbiKY9j+XzUFjHsGr7/4z5qbHt4j8581V66mfYj+FZ9opt/EwdUeakuL2A6j8x81B1RnFv5v1Wm45g/Gw9RHmonaLJ++O8JTT3sn8HeqXVafFner/ANos9sKJx7ZnOFJWGtPsBVuawW6B7FeMe3TOO5VnEt9uT1x4gKSOdnst/L+i2tfauPvJ+CxS1xOGxFNjXMuHE5RLSJb+Ey6JEHcgMRTAOUR90aTHj8EXhGPYBlmHTNs0ACI5Tb6CFxv4LETI4cNIXj4v7Pb8s/WtNb8D7kZgHQ53No96HZp9cFbRdfsPun4LvXkbrm/glmJ2YwZmt6cCZk66AdLkfFH133WsNVzZmTBabTfrB5awuXXVnl2+KS6WUtnEiR0WNFyGz0jpPG1+xWUcI3LJcM9jEco7JvPWmZxbPuP3WPO/Dl5oCpihTfnY1rw4EQSDM7wR1ac1Tq1dSSg2MAYd14PEmYKkBbgrabw8TEbi3hvEcoMTyTLZOxn4l+VggAguPAdydtuOHXsjNJzhlAk8OKMwXoxiqk5KTrCbwPebr2HYmwKGHb0GNzG7nG5J6ynTWjgF0nP9D5uqMcHZC0hwkEb5G5dn6AejWat66pB9XcN3B50J57+xeg7R9FsO9z3huR7ryLX4kaKWyNmtoMyDjc8eaMsrUGhkrDTVgcFrMnDqh7FQ8Ip5Q1ZUg1Wx91J9cINxhREmOG9OoZMpftLHtpglx6kwouSLb+x/tFSHPLWCLDU2vc6LQU7QP2mg3I6GvAzEG7RF8vG9jwTLBYFlCixjAGtib3JPE8SeKAo4b1L2tZZhi3V8femO1XjoNyg9GYInUq1MfVFr9gaI67j4oqm6BeO6PilNOPYb3fBWAA6tE9X6q0YY5z/SB71KZ3gdd5S1jZ/A3uj3KfqidWthMRhpEuHeqw+RIc2OsfBCFhGjGntI+Cz1joswdylg4PgXLe9U1HCQSRI0vx7UPLvYaexZkdvYzsue6FISKg0zNHaPNRfWHtt7x5qj1ZBsyOoj+q09vFoHd8EpjsUz+9b3rFX6lvsjxWI8nw88rveCzKwkg3dMgi023i5jqVOJrkkaFo04g75UqWPawHM0EBxAAiQN9/rUIKphAwk55JmxNzfUA6xaSOK8vMyvZ11vNNmfdnqWhUuOfxlV4Z8t7PitwcwPCD3FdbXlXuFlTRo5S9wEavJmSYEgDhqdL6q9lwVHE0XluZhAid8TY24zYeC42unHsDSe7NJH32x0tcwiLniI7ZQFUMcBa82B3RaNUZRqMqPiQXWbmMtnnlnXnv5b6cfSp5iQ8F2Y6DeTJ5LXNm431z42elWDYQ9rHB0OPEty5jugxwXtWwMMyjTaxgi0neesnedF5DsikH4hg1E5nDg1u7luXrmGfAuuvP8AXDr+HTXq3Ml9KopPrrTImrVQz6qEfXMm9psoPqLNrUF+u3rbMRKEBMKtwMJ0GTygnvt3+a0zE3uqcRUued0gPiKl5WmVpQGKrB0jkPFUYGuTI0AOu8rP219OnwQlUbSfkeeoHwROA0BSL0sxuSqGw4ywGw5uHwW2UH4gPeL8FLbOFLntJqPZLBAGWNTe7SlWzsUM7SWuaNLjjp9c12eI2eMRTYQQHsNp0IOoMdh7+KC5VmEdoK7+5vyokYJ++vU7m/IidoYOpQiWOeDvZ0hPMajuVTMUd7Kn5CmBWMK4f9RW7mfFin9ncbfaancwe5iubiGH8FXn0XjwAhSOJHsVfyPP/inBoduGcIAxFSOpnyKw0HEf8xV7Az5FJ1Zp/DUP/wBb/lWhiAPwVOym/wCVSUuwbgf+Zrz/AAfIo/ZT/wBzVI55PlRPr2j8NT8j/lWziWD8NT/Lf8qjoVuEI0rPHOGfKoDCvOmIqdzPlRFXFMO6rr/dv+VQdVYTcP8AyP8AlUlP2N//AHNTuZ8qxXetp8H/AJHfKsSnmOGxGdoYxupk8Bv13CeK3ic5DczAA2SCDOuvbotUQ8tDRmEtvlaDIvPA87LbqTQyQ9z3F0QIGUDUuFydCF5MyvZfMX4KpYjkiqz7Dq9/9Eqw74RrnWWurkeWjS8NbmO+LeCWY7EgwC+AYtEm2+dyljq3RYOX17kEQHAzE8Tw6utZ5nktOeADvm3x7Ffh6JfEAADfHLQLeHwAJl1mjQaTvJdw6upGeqYdA3sWr4RtsFrWPAaNd57OPUu2p4xpMAz1LzFrsk5SRxiyIw20XsLbmJBcd8fV+xb5uM2PTRixGtyY8QLK2piR2D68lxGF2jlLMz7NFt8lxEGer3oz9psALi/T73IERHeAugPa2Jib3BRVB2YTu3Liam1Wl2Yw0Ta9yB9blH/1YZAiGgx2cf05LPgvQGvCrqPXM4H0hY4HpDXz8lZidtsbcuED9ApGOJrgO11shK+0IMawL9wUtk7Vw9WRnZIsZIVXpAKHqX1KbmZ265TMuH4TG+xjmjTjlcRt8NfGv4XdjjB67lQG38jxx18eK5Wu0ucXXuVMU3EzN+pOrHuPo9jBUY0i4IQHp1s5wyV26EZHciC5zT2y4dgXM+gW1sjxTe7XQ6di9SrPpvpljwHMdYg+HUZi6dmD7eVurhjCT3KWE9JMSGZWsYbakn3J36aejTWMFXDmGCA9hl2pADmmZibEcwkGzaFUCzmDrY4+OcLN3cMzHQ7H2tiaroq5cgEgAGZ5lO2unQAfXUuZwr67dHUu1rvnRza+Jv8A/FpwcB/rW+fDNOADfQfHrsrGOtfVJG4jEj8NI8un+qx2KxPsUvzP+VOg9LwtZwkX2vEj+zpH+N/yLP2hif7ql/mO+RWk9zBZnCQjH4n+6p/5jvkW/wBoYj+6Z/mH5VaDrONxHvWn1BxSQ4yvupCeVTzCgNo4jfh/52+atR560cVtJf2hX/uP52+axJefVGuynRjSCHBjobEESS76lU0sRSDQGAiYzOdv3NGm+UXiQei5xDDqBaLARB4gTvQFJrsxeRnkwRYzB1yk7l5JNezqyB2WRTH9FCud0jGkmOqVdgmF3Vx8k9Tw8tU1n5tL3jxspYaAZMTz3I5mHazS3dfrVgRqQ9e32m94WZ2n8Q7wrWiVrKOCYVYP7yy/FTLG+yO4LBhmH8Le4LcSTZUw0qH2dnBvuWDDt+iR8UjWGmonDjeFY3DtOmbse7zUhhubh/EfiVLVH2UcFsYUc+9ECh+87v8A0WCgfbf/AC/KhrQjtnMOrQVjNntaDlbE66360UaZ9t3c35Vssd7c9g8lm6ZYDfhoWep4BFFrvaHa39Vga/2m/lPzI8tWxCjQ3Gyb08XXa0BtZ4A3WPiQl7GP9pv5D8yvAqcWflPmtM7Bj8XVcCH1XuB3E27h7kfstxjcfrrSLpnUs8QjcI6sPumn2l0z3J53R1ZjqaVV0fdHdZWuqOIsGzzHfeUlp18Twok8CXjxylTZXxN+hS6vWG3V0NF1YNS5/sg9p8ljqxAJyDv/AES8YzE76TOx/wDtWVcTWcIdRF/ZePiAoJP2i6bERwP6IunVLgHADvI+CStc+bYZ/XnZ8wRLdoVGw37M8Dk6mf8AzRNauG2Zw1aB2/opMfI0B7fNK27SeP8Apqg7WfOqqmPknNQrDqaD7iUg6Do/AewjzWGrH4HHqy/MlP7cA1o1v8tx9wWv/UDP7usOuk8f+KtRr6z9x3h8yxK/28z2Kn+U/wAlitRDjXMaHue0PaA0gRpO++sWSluAc45hUiQbREzcaWAiFixeWXI9dkA0cGT0nTHKJJ370wAAERAGixYrp5r7QJE6KD6kblixMTQqKbXLFi0lgAKsaOCxYtphoA63UxhwQLW7vctrFWqJCnlEAR1KYbMLFiyotbTWOYsWIKtzSoEdXitrEFEgb1oNG5YsSlrWlTLyARJusWJ5FVteePfKYYSsQJI8VpYtQU0Zim2Og3/UK9j2kgzppqZB4giFixdGKvNQDl2JbiH4g1B6s0RT35g8u52BA8VixP0jHK4u3RHb5K0ALSxIY6AsAB0WliC2WX061pzeSxYpIZVixYov/9k="
+                                alt="" style="width:200px;height:200px">
+                            <div class="cleatfix">
+                                <div class="bg-secondary float-end clearfix"></div>
+                            </div>
+                            在網頁設計中，佈局是關鍵要素之一。Bootstrap 的 Grid 系統提供了一套簡單而強大的工具，讓我們能夠有效地管理和組織網頁中的內容。
+
+                            首先，我們要認識兩個基本元素：列和欄。列就像是網格中的一行，而欄則是列中的一個小單位。透過列和欄的組合，我們可以建立出彈性且有結構的網頁佈局。
+
+                            在 Bootstrap 中，我們使用 .row 類別來創建一個列。這個類別會幫助我們將欄位放置在同一行中，讓它們保持整齊對齊。
+
+                            接著，我們使用 .col-* 類別來設定欄位的寬度比例。這個類別可以根據需要調整欄位的大小，讓它們適應不同的螢幕尺寸。
+
+                            <p class="lead">
+                                舉個例子來說，如果我們想要兩個欄位佔據同樣的寬度，可以使用 .col-6 類別，其中的數字表示佔據的比例。同樣地，如果我們想要四個欄位佔據相等的空間，可以使用 .col-3。
+                            </p>
+
+                            另外，Bootstrap 的 Grid 系統還支援斷點（Breakpoints），根據不同的螢幕尺寸調整佈局。例如，我們可以使用 .col-md-* 類別來設定在中型螢幕上的欄位寬度。
+
+                            在建立佈局時，<ins>記得保持簡潔且易於閱讀</ins>。<del>過度使用欄位和過多的嵌套</del>可能會讓佈局變得混亂，難以維護。<em>著重於清晰度和一致性</em>，讓網頁內容能夠自然地流動。
+
+                            重要的是，Bootstrap Grid 系統不僅僅局限於基本的佈局。我們還可以進一步探索其他功能和選項，例如偏移（Offset）和嵌套（Nesting）。
+
+                            偏移允許我們在列中創建一些空白區域，讓內容有更好的視覺分隔效果。我們可以使用 .offset-* 類別來達到這個效果。例如，如果我們想要在一列中的第一個欄位前留出一些空間，可以使用
+                            .offset-2，其中的數字表示偏移的欄位數量。
+
+                            嵌套是一種有趣且強大的功能，它允許我們在一個欄位中再次建立新的列和欄。這讓我們能夠在一個欄位中建立更複雜的佈局結構。使用 .row 和 .col-*
+                            來建立嵌套佈局，並根據需要繼續添加更多的欄位。
+
+                            另外，Bootstrap Grid 系統還提供了一些實用的類別，例如對齊方式（Alignment）和內容填充（Padding）。我們可以使用 .justify-content-*
+                            來調整欄位的水平對齊方式，例如靠左對齊或置中對齊。而 .p-* 類別則可以用於設定欄位的內容填充。
+                            <div class="text-center text-lg-start">
+                                <figure>
+                                    <blockquote class="blockquote">除了基本的類別之外，Bootstrap Grid 還提供了更多進階的選項和自訂性。你可以參考
+                                        Bootstrap官方文件和範例，深入瞭解更多關於
+                                        Grid 系統的功能和用法。</blockquote>
+                                    <figcaption class="blockquote-footer"><cite title="May 18 Version">ChatGPT</cite>
+                                    </figcaption>
+                                </figure>
+                            </div>
+                            嘿，現在是時候發揮你的創意，用 Bootstrap Grid 打造出一個令人驚艷的網頁佈局吧！這個強大的工具將讓你的網頁更具結構性和視覺吸引力。加油，我們期待看到你的精彩作品！♪
+
+                            <p class="text-success">
+                                參考連結：<a href="#" class="text-reset icon-link"><svg xmlns="http://www.w3.org/2000/svg"
+                                        width="16" height="16" fill="currentColor" class="bi bi-airplane-engines"
+                                        viewBox="0 0 16 16">
+                                        <path
+                                            d="M8 0c-.787 0-1.292.592-1.572 1.151A4.347 4.347 0 0 0 6 3v3.691l-2 1V7.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.191l-1.17.585A1.5 1.5 0 0 0 0 10.618V12a.5.5 0 0 0 .582.493l1.631-.272.313.937a.5.5 0 0 0 .948 0l.405-1.214 2.21-.369.375 2.253-1.318 1.318A.5.5 0 0 0 5.5 16h5a.5.5 0 0 0 .354-.854l-1.318-1.318.375-2.253 2.21.369.405 1.214a.5.5 0 0 0 .948 0l.313-.937 1.63.272A.5.5 0 0 0 16 12v-1.382a1.5 1.5 0 0 0-.83-1.342L14 8.691V7.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v.191l-2-1V3c0-.568-.14-1.271-.428-1.849C9.292.591 8.787 0 8 0ZM7 3c0-.432.11-.979.322-1.401C7.542 1.159 7.787 1 8 1c.213 0 .458.158.678.599C8.889 2.02 9 2.569 9 3v4a.5.5 0 0 0 .276.447l5.448 2.724a.5.5 0 0 1 .276.447v.792l-5.418-.903a.5.5 0 0 0-.575.41l-.5 3a.5.5 0 0 0 .14.437l.646.646H6.707l.647-.646a.5.5 0 0 0 .14-.436l-.5-3a.5.5 0 0 0-.576-.411L1 11.41v-.792a.5.5 0 0 1 .276-.447l5.448-2.724A.5.5 0 0 0 7 7V3Z" />
+                                    </svg>https://getbootstrap.com/docs/5.3/utilities/text/</a>
+                            </p>
+                            <span class="text-break">
+                                ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+                            </span>
+                        </div>
+                        <!-- table -->
+                        <div class="table-responsive">
+                            <table class="table table-striped-columns table-hover caption-top text-nowrap">
+                                <caption>這個表格讚這個表格超讚這個表格超級讚</caption>
+                                <thead>
+                                    <th scope="col">編號</th>
+                                    <th scope="col">元件</th>
+                                    <th scope="col">英文名稱</th>
+                                    <th scope="col">描述</th>
+                                    <th scope="col">連結</th>
+                                </thead>
+                                <tbody class="table-group-divider">
+                                    <tr>
+                                        <th scope="row">1</th>
+                                        <td class="table-secondary">網格</td>
+                                        <td>Grid</td>
+                                        <td>Bootstrap的佈局系統，用於創建靈活的網頁佈局</td>
+                                        <td><a href="#">https://getbootstrap.com/docs/5.3/layout/grid/</a></td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">2</th>
+                                        <td>按鈕</td>
+                                        <td>Button</td>
+                                        <td>使用不同樣式和大小的按鈕增加互動性和功能</td>
+                                        <td><a href="#">https://getbootstrap.com/docs/5.3/layout/buttons/</a></td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">3</th>
+                                        <td>模式對話框</td>
+                                        <td>Modal</td>
+                                        <td>創建視窗對話框，用於顯示詳細內容或進行操作 </td>
+                                        <td><a href="#">https://getbootstrap.com/docs/5.3/layout/modal/</a></td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">4</th>
+
+                                        <td colspan="2">圖片 Image</td>
+                                        <!-- <td></td> -->
+                                        <td>輕鬆添加圖片到網頁並進行適當的調整和排版</td>
+                                        <td><a href="#">https://getbootstrap.com/docs/5.3/layout/images/</a></td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">5</th>
+
+                                        <td>表格</td>
+                                        <td>Table</td>
+                                        <td>建立具有排序和過濾功能的美觀表格，展示數據內容</td>
+                                        <td><a href="#">https://getbootstrap.com/docs/5.3/layout/tables/</a></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <!-- 更多文章 -->
+                        <h2 class="fs-3 text-primary">更多文章</h2>
+                        <div class="row row-cols-2 g-3 mb-4">
+                            <div class="col order-1">
+                                <div class="p-3 bg-body rounded-2 ">
+                                    <h4 class="text-truncate">加強網頁互動！Bootstrap Modal 教學</h4>
+                                    <span>2023/05/19</span>
+                                    <p>讓我們一起探索 Bootstrap 的 Modal
+                                        功能，這是一個強大的互動元件，可以讓我們在網頁中顯示彈出視窗，實現更多元化的互動效果。在這篇教學中，我們將學習如何使用 Bootstrap的
+                                        Modal，包括觸發機制、自訂樣式和動畫效果，讓我們的網頁更加生動有趣～</p>
+                                </div>
+                            </div>
+                            <div class="col order-3">
+                                <div class="p-3 bg-body rounded-2 ">
+                                    <h4 class="text-truncate">華麗又實用！打造漂亮按鈕的 Bootstrap 教學</h4>
+                                    <span>2023/05/22</span>
+                                    <p>在這篇教學中，我們將一起探索 Bootstrap
+                                        的按鈕元件，讓我們的網頁華麗又實用！我們將學習如何使用不同的按鈕樣式、大小和狀態，並添加圖標或下拉選單等功能。透過
+                                        Bootstrap的強大按鈕元件，我們可以輕鬆打造出各種吸引人的互動元素～</p>
+                                </div>
+                            </div>
+                            <div class="col order-1">
+                                <div class="p-3 bg-body rounded-2 ">
+                                    <h4 class="text-truncate">簡化表單設計！Bootstrap Form 教學</h4>
+                                    <span>2023/05/18</span>
+                                    <p>讓我們來簡化表單設計的過程吧！在這篇教學中，我們將探索 Bootstrap 的 Form
+                                        元件，讓表單設計變得輕鬆又美觀。我們將學習如何使用不同的表單控制項、佈局工具和驗證功能，提升用戶體驗並節省開發時間。透過 Bootstrap 的強大 Form
+                                        元件，我們可以輕鬆打造出專業又方便使用的表單～</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion accordion-flush mb-4" id="accordion">
+                            <div class="accordion-item">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#item1" aria-expanded="true" aria-controls="item1">
+                                        加強網頁互動！Bootstrap Modal 教學
+                                    </button>
+                                </h2>
+                                <div id="item1" class="accordion-collapse collapse show" data-bs-parent="#accordion">
+                                    <div class="accordion-body">
+                                        讓我們一起探索 Bootstrap 的 Modal
+                                        功能，這是一個強大的互動元件，可以讓我們在網頁中顯示彈出視窗，實現更多元化的互動效果。在這篇教學中，我們將學習如何使用 Bootstrap的
+                                        Modal，包括觸發機制、自訂樣式和動畫效果，讓我們的網頁更加生動有趣～
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#item2" aria-expanded="false" aria-controls="item2">
+                                        華麗又實用！打造漂亮按鈕的 Bootstrap 教學
+                                    </button>
+                                </h2>
+                                <div id="item2" class="accordion-collapse collapse" aria-labelledby="headingTwo"
+                                    data-bs-parent="#accordion">
+                                    <div class="accordion-body">
+                                        在這篇教學中，我們將一起探索 Bootstrap
+                                        的按鈕元件，讓我們的網頁華麗又實用！我們將學習如何使用不同的按鈕樣式、大小和狀態，並添加圖標或下拉選單等功能。透過
+                                        Bootstrap的強大按鈕元件，我們可以輕鬆打造出各種吸引人的互動元素～
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#item3" aria-expanded="false" aria-controls="item3">
+                                        簡化表單設計！Bootstrap Form 教學
+                                    </button>
+                                </h2>
+                                <div id="item3" class="accordion-collapse collapse" aria-labelledby="headingThree"
+                                    data-bs-parent="#accordion">
+                                    <div class="accordion-body">
+                                        讓我們來簡化表單設計的過程吧！在這篇教學中，我們將探索 Bootstrap 的 Form
+                                        元件，讓表單設計變得輕鬆又美觀。我們將學習如何使用不同的表單控制項、佈局工具和驗證功能，提升用戶體驗並節省開發時間。透過 Bootstrap 的強大
+                                        Form
+                                        元件，我們可以輕鬆打造出專業又方便使用的表單～
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+
+                        <h2 class="fs-3 text-primary">留言</h2>
+                        <form action="">
+                            <div class="form-floating mb-3">
+                                <input type="text" class="form-control" id="Name" placeholder="Enter name">
+                                <label for="Name">Name</label>
+                                <div class="form-text">姓名或暱稱</div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="email" class="form-label">Email</label>
+                                <div class="input-group">
+                                    <input type="email" class="form-control" id="email">
+                                    <span class="input-group-text">@example.com</span>
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="reply">留言</label>
+                                <textarea class="form-control" id="reply" rows="5"></textarea>
+                            </div>
+                            <div class="mb-3">
+                                <label for="more" class="form-label">還想了解關於BS的....</label>
+                                <input class="form-control" list="morelist" id="more" placeholder="輸入想了解的內容">
+                                <datalist id="morelist">
+                                    <option value="按鈕">Button</option>
+                                    <option value="模式對話🧺">Model</option>
+                                    <option value="圖片">Image</option>
+                                    <option value="表格">Table</option>
+                                </datalist>
+                            </div>
+                            <div class="mb-3">
+                                <label for="info" class="form-label">從哪裡得知文章</label>
+                                <select class="form-select" aria-label="Default select example" id="info">
+                                    <option value="1">Google搜尋</option>
+                                    <option value="2">Facebook</option>
+                                    <option value="3">Friend</option>
+                                </select>
+                                <div class="form-check form-switch mb-3">
+                                    <input class="form-check-input" type="checkbox" role="switch" value="" id="sub">
+                                    <label class="form-check-label" for="sub">
+                                        我想要訂閱電子報～
+                                    </label>
+                                </div>
+                                <button type="submit" class="btn btn-primary">送出</button>
+                                <button type="button" class="btn btn-secondary focus-ring"
+                                    style="--bs-focus-ring: rgba(var(--bs-success-rgb), .25)">取消</button>
+                                <button type="button" class="btn btn-info" id="AlertBtn">
+                                    <svg width="16" height="16" fill="currentColor" class="bi bi-1-circle-fill">
+                                        <use xlink:href="#sun1" />
+                                    </svg>
+                                    點我給你個驚喜</button>
+                                <div id="Alert"></div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-lg-4">
+                <div class=" text-bg-light p-3 rounded-2">
+                    <h2 class="border-bottom pb-2 border-secondary border-3 fs-4">最新文章</h2>
+                    <div class="d-flex flex-column-reverse">
+                        <div class="p-2 mb-3 text-bg-secondary d-flex" style="height:150px">
+                            <div class="d-flex flex-column">
+                                <div class="mb-auto"> 加強網頁互動！Bootstrap Modal 教學</div>
+                                <div>100人看過</div>
+                                <div>2023/5/18</div>
+                            </div>
+                            <div class="h-100" style="aspect-ratio: 1 / 1">
+                                <img class="w-100 h-100 object-fit-cover
+                                " src="https://media-cldnry.s-nbcnews.com/image/upload/rockcms/2022-08/220805-border-collie-play-mn-1100-82d2f1.jpg"
+                                    alt="">
+                            </div>
+                        </div>
+                        <div class="p-2 mb-3 text-bg-secondary d-flex flex-column justify-content-between"
+                            style="height:150px">
+                            華麗又實用！打造漂亮按鈕的 Bootstrap 教學
+                            <div>100人看過</div>
+                            <div>2023/5/19</div>
+                        </div>
+                        <div class="p-2 mb-3 text-bg-secondary position-relative">
+                            簡化表單設計！Bootstrap Form 教學
+                            <div>2023/5/22</div>
+                            <div
+                                class="position-absolute top-0 start-0 translate-middle circle text-bg-danger d-flex justify-content-center align-items-center rounded-circle">
+                                1</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="block text-bg-light p-3 rounded-2 sticky-top shadow">
+                    <h2 class="border-bottom pb-2 border-secondary border-3 fs-4">ALLIE'S BLOG</h2>
+                    <div class="vstack align-items-center">
+                        <div class="rounded-circle circle bg-secondary mb-2 shadow">
+                            <img class="w-100 h-100 object-fit-cover"
+                                src="data:image/png;base64,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"
+                                alt="">
+                        </div>
+                        <h4 class="text-primary text-uppercase fs-4">Allie</h4>
+                        <div class="badge rounded-pill text-bg-primary mb-2">前端工程師</div>
+                    </div>
+                    <dl class="row g-0 mb-0">
+                        <dt class="col-3">TEL</dt>
+                        <dd class="col-9">0800-000-000</dd>
+                        <dt class="col-3">Email</dt>
+                        <dd class="col-9">huaruhsiao.b@gmail.com</dd>
+                    </dl>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- <script src="./js/bootstrap.bundle.js"></script> -->
+    <script src="./bootstrap.min.js"></script>
+    <script>
+        const alertPlaceholder = document.getElementById('Alert')
+
+        const alert = (message, type) => {
+            const wrapper = document.createElement('div')
+            wrapper.innerHTML = [
+                `<div class="alert alert-${type} alert-dismissible mt-3" role="alert">`,
+                `   <div class="d-flex align-items-center">
+                    <svg width="16" height="16" fill="currentColor" class="bi bi-3-circle-fill" 
+                    class="bi flex-shrink-0 me-2" role="img" aria-label="Info:"><use 
+                    xlink:href="#sun"/></svg>
+                    ${message}</div>`,
+                '   <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>',
+                '</div>'
+            ].join('')
+
+            alertPlaceholder.append(wrapper)
+        }
+
+        const alertTrigger = document.getElementById('AlertBtn')
+        if (alertTrigger) {
+            alertTrigger.addEventListener('click', () => {
+                alert('Hello frontend engineer~~~', 'info')
+            })
+        }</script>
+</body>
+
+</html>
